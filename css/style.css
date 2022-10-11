@@ -1,0 +1,238 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+}
+
+* {
+    line-height: 1.5rem;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    transition: all 250ms;
+}
+main {
+    width: 90%;
+    margin: 0 auto;
+}
+
+header{
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+input,
+#submit {
+    font-size: 1.2rem;
+    padding: .5em;
+    margin-bottom: .5em;
+    border: none;
+    width: 60%;
+    justify-self: center;
+    align-self: center;
+}
+
+#submit {
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    border: 2px solid darkred;
+    transition: all 250ms;
+}
+
+#submit:hover,
+#submit:focus {
+    background-color: white;
+    cursor: pointer;
+    color: black;
+    transform: scale(1.05);
+}
+
+.tv-show {
+    display: grid;
+    grid-template-columns: 5% 90% 5%;
+    grid-template-rows: 5rem minmax(20rem, 30rem) minmax(16rem ,30rem);
+    grid-template-areas: 
+        "title title title"
+        "image image image";
+    background-color: rgb(101, 6, 6);
+    margin: 1em auto;
+    grid-row-gap: .5em;
+    box-sizing: border-box;
+}
+
+.tv-show-name {
+    grid-area: title; 
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+h4 {
+    margin: 0;
+    padding: 1em;
+
+}
+
+.tv-show-image {
+    width: 320px;
+    grid-area: image;
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+.tv-show-summary {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    overflow: scroll;
+}
+
+
+img {
+    width: 100%;
+    object-fit: cover;
+}
+
+div {
+    text-align: center; 
+}
+
+p {
+    margin: 0;
+}
+
+.seasons {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    margin: 1em;
+}
+
+.seasons-header {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: .5rem;
+}
+
+.a-season {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: repeat(2, 5vh) 45vh;
+    grid-template-areas: 
+        "image season"
+        "image episodes"
+        "image summary";
+        
+    background: rgb(223, 153, 3);
+    border-radius: 10px;
+    overflow: hidden;;
+    margin: 1em;
+}
+
+.a-season-image {
+    grid-area: image;
+    overflow: hidden;
+}
+
+.a-season-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.a-season-no {
+    grid-area: season;
+    align-self: end;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: rgb(164, 0, 0);
+}
+
+.a-episodes {
+    grid-area: episodes;
+    align-self: end;
+    font-size: 1.2rem;
+    margin-bottom: 1em;
+    color: rgb(4, 123, 22);
+    font-weight: bold;
+}
+
+.a-season-summary {
+    grid-area: summary;
+    padding: .5em;
+    align-self: center;
+    font-size: .9rem;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    height: 50vh;
+    overflow: scroll;
+    margin-top: 1em;
+    /* text-align: left; */
+}
+
+@media (min-width:675px) {
+    .tv-show {
+        grid-template-rows: 5rem minmax(20rem, 30rem) 16rem;
+    }
+    .seasons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 600px);
+    }
+
+    .seasons-header {
+        grid-column: 1 / -1
+    }
+    .a-season {
+        grid-template-columns: 5% 90% 5%;
+        grid-template-rows: repeat(2, 5vh) 75vh;
+        grid-template-areas: 
+            ". season ."
+            ". episodes ."
+            '. image-summary .';
+        grid-row-gap: .5em;
+        min-width: 400px;
+        justify-content: center;
+        padding-top: 1em;
+        /* min-width: 500px; */
+        /* margin: 0 auto; */
+    }
+
+    .a-episodes {
+        grid-area: episodes;
+    }
+    .a-season-image {
+        grid-area: image-summary;
+    }
+
+    .a-season-summary {
+        grid-area: image-summary;
+        width: 350px;
+        margin: 0 auto;
+        background-color: rgba(0 , 0, 0, .5 );
+        text-shadow: 0 0 10px black;
+        align-content: end;
+        margin-top: auto;
+        padding: 1.5em 0;
+    }
+
+    .a-season-image img {
+        object-fit: contain;
+    }
+
+}
+
+/* <div class="tv-show">
+    <h4>${tvShow.name}</h4>
+    <img src="${tvShow.image.medium}" alt="${tvShow.name} poster" />
+    ${tvShow.summary}
+<div>
+<div class="a-season">
+    <div class="a-season-no">Season ${season.number}</div>
+    <div class="a-episodes">Number of Episodes: ${season.episodeOrder}</div>
+    <div class="a-season-image"><a href="${season.url}"><img src="${season.image.mediu" /></a></div>
+    <div class="a-season-summary">${season.summary}</div>
+</div> */
